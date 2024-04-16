@@ -32,12 +32,12 @@ class MissingSeparatorChecker(SyntaxChecker):
             for value in data[directive]:             
                 value = str(value)
                 if isDirective.isDirective(value):
-                    finding = Finding(data.headerkey, FindingType.MISSING_SEMICOLON,'Did you forget the '+ str(directiveseperator) + ' character? "' + str(value) + '" seems to be a directive, not a value',FindingSeverity.SYNTAX, directive, value)
+                    finding = Finding(data.headerkey, FindingType.MISSING_SEMICOLON,'The '+ str(directiveseperator) + ' character may be missing. "' + str(value) + '" seems to be a directive, not a value',FindingSeverity.SYNTAX, directive, value)
                     if not finding in findings:
                         findings.append(finding)
                 for directive2 in list(isDirective):
                     if str(directive2) in str(value).lower()and not isDirective.isDirective(value) and not str(directive2) +'.' in str(value).lower() and not "_" + str(directive2) in str(value).lower(): #to avoid things like https://*.sandbox.paypal.com or xss_report                        
-                        finding = Finding(data.headerkey, FindingType.MISSING_SEMICOLON,'Did you forget the '+ str(directiveseperator) + ' character? "' + str(value) + '" seems to be a directive, not a value',FindingSeverity.SYNTAX, directive, value)
+                        finding = Finding(data.headerkey, FindingType.MISSING_SEMICOLON,'The '+ str(directiveseperator) + ' character may be missing. "' + str(value) + '" seems to be a directive, not a value',FindingSeverity.SYNTAX, directive, value)
                         if not finding in findings:
                             findings.append(finding)
            
