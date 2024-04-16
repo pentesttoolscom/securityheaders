@@ -8,6 +8,6 @@ class CSPReportOnlyNoCSPChecker(CSPReportOnlyChecker, CSPChecker):
         csp = CSPChecker.getcsp(self,headers)
 
         if not csp and rocsp:
-            description = "The CSP is not enforced as only the content-security-policy-report-only header is present. Can you set the content-security-policy?"
+            description = "The CSP is not enforced as only the content-security-policy-report-only header is present. We recommend setting the content-security-policy."
             return [Finding(rocsp.headerkey, FindingType.REPORT_ONLY,description,FindingSeverity.INFO, None, None)]
         return []
