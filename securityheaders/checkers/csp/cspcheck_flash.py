@@ -43,6 +43,6 @@ class CSPCheckFlash(CSPCheck):
             if (flashBypass):
                 findings.append(Finding(csp.headerkey, FindingType.OBJECT_WHITELIST_BYPASS, flashBypass.netloc + ' is known to host Flash files which allow to bypass this CSP.',FindingSeverity.HIGH, directive, value))
             elif (directive == csp.directive.OBJECT_SRC):
-                findings.append(Finding(csp.headerkey, FindingType.OBJECT_WHITELIST_BYPASS, 'Can you restrict object-src to \'none\' only?',FindingSeverity.MEDIUM_MAYBE, directive,value))
+                findings.append(Finding(csp.headerkey, FindingType.OBJECT_WHITELIST_BYPASS, 'We recommend restricting object-src to \'none\' only.',FindingSeverity.MEDIUM_MAYBE, directive,value))
 
         return findings
